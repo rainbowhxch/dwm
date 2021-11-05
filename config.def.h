@@ -65,6 +65,8 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define script(name) "/home/ch/.config/i3/script/" name
+#define xmodmap(name) "/home/ch/.config/i3/xmodmap/" name
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -72,6 +74,22 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *chromecmd[] = { "google-chrome-stable", NULL };
+static const char *rangercmd[] = { "st", "-e", "ranger", NULL };
+static const char *i3lockcmd[] = { script("i3lock.sh"), NULL };
+static const char *gnomescreenshotcmd[] = { script("gnome-screenshot.sh"), NULL };
+static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
+static const char *arandrcmd[] = { "arandr", NULL };
+static const char *emojicmd[] = { script("dmenu-emoji.sh"), NULL };
+static const char *neteasecmd[] = { "netease-cloud-music", NULL };
+static const char *clipmenucmd[] = { "clipmenu", NULL };
+static const char *wpscmd[] = { "wps", NULL };
+static const char *qtcreatorcmd[] = { "qtcreator", NULL };
+static const char *pavucontrolcmd[] = { "pavucontrol", NULL };
+static const char *timcmd[] = { script("tim.sh"), NULL };
+static const char *wechatcmd[] = { script("wechat.sh"), NULL };
+static const char *qwertycmd[] = { xmodmap(".Xmodmap-qwerty"), NULL };
+static const char *colemakcmd[] = { xmodmap(".Xmodmap-colemak"), NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
