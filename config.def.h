@@ -17,7 +17,6 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -68,12 +67,12 @@ static const Layout layouts[] = {
 #define xmodmap(name) "/home/ch/.config/i3/xmodmap/" name
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 static const char *chromecmd[] = { "google-chrome-stable", NULL };
+static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *rangercmd[] = { "st", "-e", "ranger", NULL };
 static const char *i3lockcmd[] = { script("i3lock.sh"), NULL };
 static const char *gnomescreenshotcmd[] = { script("gnome-screenshot.sh"), NULL };
@@ -87,12 +86,13 @@ static const char *qtcreatorcmd[] = { "qtcreator", NULL };
 static const char *pavucontrolcmd[] = { "pavucontrol", NULL };
 static const char *timcmd[] = { script("tim.sh"), NULL };
 static const char *wechatcmd[] = { script("wechat.sh"), NULL };
-static const char *qwertycmd[] = { xmodmap(".Xmodmap-qwerty"), NULL };
-static const char *colemakcmd[] = { xmodmap(".Xmodmap-colemak"), NULL };
+static const char *qwertycmd[] = { "xmodmap", xmodmap(".Xmodmap-qwerty"), NULL };
+static const char *colemakcmd[] = { "xmodmap", xmodmap(".Xmodmap-colemak"), NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_c,         spawn,          {.v = chromecmd } },
+	{ MODKEY|ShiftMask,             XK_c,         spawn,          {.v = firefoxcmd } },
 	{ MODKEY,                       XK_F4,        spawn,          {.v = i3lockcmd } },
 	{ MODKEY,                       XK_semicolon, spawn,          {.v = rangercmd } },
 	{ MODKEY|ShiftMask,             XK_a,         spawn,          {.v = flameshotcmd } },
@@ -119,7 +119,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_j,         incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,         setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,         setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return,    zoom,           {0} },
+	{ MODKEY,                       XK_e,         zoom,           {0} },
 	{ MODKEY|Mod4Mask,              XK_h,         incrgaps,       {.i = +1 } },
 	{ MODKEY|Mod4Mask,              XK_l,         incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_p,         incrogaps,      {.i = +1 } },
@@ -130,10 +130,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_d,         defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,       view,           {0} },
 	{ MODKEY,                       XK_q,         killclient,     {0} },
-	{ MODKEY,                       XK_t,         setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,         setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_n,         setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_f,         fullscreen,     {0} },
+	{ MODKEY|ShiftMask,             XK_t,         setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_f,         setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_w,         setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_f,         fullscreen,     {0} },
 	{ MODKEY,                       XK_space,     setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,     togglefloating, {0} },
 	{ MODKEY,                       XK_0,         view,           {.ui = ~0 } },
