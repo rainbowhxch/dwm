@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+instance="${instance:-$HOME}"
+alert_low="${alert_low:-10}"
+
+df -h -P $instance | awk -v alert_low=$alert_low '
+/\/.*/ {
+    # full text
+    print " " $3 "/" $2 " "
+    exit 0
+}'
