@@ -84,12 +84,12 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 static const char *chromecmd[] = { "google-chrome-stable", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
-static const char *rangercmd[] = { "st", "-e", "ranger", NULL };
+static const char *rangercmd[] = { "kitty", "ranger", NULL };
 static const char *i3lockcmd[] = { script("i3lock.sh"), NULL };
 static const char *gnomescreenshotcmd[] = { script("gnome-screenshot.sh"), NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };

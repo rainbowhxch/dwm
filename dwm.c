@@ -2330,7 +2330,8 @@ tagmon(const Arg *arg)
 	if (!selmon->sel || !mons->next)
 		return;
 	sendmon(selmon->sel, dirtomon(arg->i));
-  focusmon(arg);
+    focusmon(arg);
+    focus(selmon->sel);
 }
 
 void
