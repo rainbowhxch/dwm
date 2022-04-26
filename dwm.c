@@ -2331,7 +2331,6 @@ tagmon(const Arg *arg)
 		return;
 	sendmon(selmon->sel, dirtomon(arg->i));
     focusmon(arg);
-    focus(selmon->sel);
 }
 
 void
